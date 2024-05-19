@@ -1,0 +1,15 @@
+[Unit]
+Description=app
+After=syslog.target
+
+[Service]
+User=dev
+Group=dev
+WorkingDirectory=/opt/app
+ExecStart=/opt/app/app.sh
+Restart=always
+SuccessExitStatus=143
+EnvironmentFile=/opt/app/.env
+
+[Install]
+WantedBy=multi-user.target

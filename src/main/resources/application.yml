@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: Book-Management
+  main:
+    banner-mode: off
+    log-startup-info: false
+  messages:
+    basename: messages
+    encoding: UTF-8
+    fallback-to-system-locale: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    auto-commit: false
+
+server:
+  port: ${PORT:5000}
+  tomcat:
+    max-threads: ${TOMCAT_MAX_THREADS:200}
+    min-spare-threads: ${TOMCAT_MIN_THREADS:20}
+  shutdown: graceful
+
+logging:
+  file:
+    path: ${LOG_PATH:./logs}
+  level:
+    root: ${LOG_LEVEL:INFO}
+
+springdoc:
+  api-docs:
+    enabled: ${IS_API_DOCUMENT_DISPLAY:false}
+
+openapi:
+  dev:
+    url: ${DEV_SERVER_URL}
+    description: ${DEV_SERVER_DESCRIPTION}
+  local:
+    url: ${LOCAL_SERVER_URL:http://localhost:5000}
+    description: ローカル環境
+
+request:
+  http-headers:
+    api-key: ${API-KEY:TEST}

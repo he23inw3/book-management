@@ -1,0 +1,36 @@
+empty-blocks:
+  EmptyFunctionBlock:
+    excludes:
+    - "**/test/**"
+exceptions:
+  ExceptionRaisedInUnexpectedLocation:
+    excludes:
+      - "**/test/**"
+  SwallowedException:
+    excludes:
+      - "**/exception/**"
+      - "**/test/**"
+style:
+  ThrowsCount:
+    max: 5
+  MagicNumber:
+    excludes:
+      - "**/constant/DefaultValueConstant.kt"
+      - "**/openapi/**"
+      - "**/test/**"
+  UnusedPrivateProperty:
+    excludes:
+      - "**/exception/**"
+      - "**/test/**"
+naming:
+  VariableNaming:
+    excludes:
+      - "**/test/**"
+  MemberNameEqualsClassName:
+    excludes:
+      - "**/test/**"
+performance:
+  SpreadOperator:
+    excludes:
+      - "**/BookManagementApplication.kt" # because generated class
+      - "**/test/**"

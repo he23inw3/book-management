@@ -1,0 +1,215 @@
+﻿# A5:ER FORMAT:18
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright © 2007 m.matsubara
+# A5:SQL Mk-2 Version 2.19.1 Copyright © 1997 - 2024 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=mikael
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",2,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=2
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=6
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+RDBMSType=7
+RDBMSTypeName=PostgreSQL
+BackupRestoreTempTable=0
+CreateFk=1
+FKParentIndex=1
+GenerateCommentStatement_Comment=0
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+UpperCaseKeyword=0
+CreateOrder=Dependent
+ShowTag=1
+ShowCommonAttributes=0
+BugFixEntityWidth=1
+
+[Entity]
+PName=tbl_book
+LName=書籍
+Comment=
+TableInnerOption=
+TableOption=
+Page=MAIN
+Left=350
+Top=300
+Field="書籍ID","book_id","bigserial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="書籍名","book_name","varchar(255)","NOT NULL",,"","",$FFFFFFFF,""
+Field="総ページ数","total_page","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="ISBN","isbn","varchar(20)","NOT NULL",,"","",$FFFFFFFF,""
+Field="出版日","published_at","date","NOT NULL",,"","",$FFFFFFFF,""
+Field="著者ID","author_id","bigint","NOT NULL",,"","",$FFFFFFFF,""
+Field="出版社ID","publisher_id","bigint","NOT NULL",,"","",$FFFFFFFF,""
+Field="ジャンルID","genre_id","bigint","NOT NULL",,"","",$FFFFFFFF,""
+Field="有効開始日","valid_start_date","date","NOT NULL",,"","",$FFFFFFFF,""
+Field="有効終了日","valid_end_date","date","NOT NULL",,"","",$FFFFFFFF,""
+Field="作成者","created_by","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="作成日時","created_at","timestamp","NOT NULL",,"CURRENT_TIMESTAMP ","",$FFFFFFFF,""
+Field="更新者","updated_by","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="更新日時","updated_at","timestamp","NOT NULL",,"CURRENT_TIMESTAMP ","",$FFFFFFFF,""
+Index=idx_uniq_isbn=1,isbn
+Index=idx_author_id=0,author_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20240510113502
+Position="MAIN",350,300,259,374
+ZOrder=1
+
+[Entity]
+PName=tbl_author
+LName=著者
+Comment=
+TableInnerOption=
+TableOption=
+Page=MAIN
+Left=850
+Top=350
+Field="著者ID","author_id","bigserial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="著者名","author_name","varchar(255)","NOT NULL",,"","",$FFFFFFFF,""
+Field="略歴","brief_history","text","NOT NULL",,"","",$FFFFFFFF,""
+Field="有効開始日","valid_start_date","date","NOT NULL",,"","",$FFFFFFFF,""
+Field="有効終了日","valid_end_date","date","NOT NULL",,"","",$FFFFFFFF,""
+Field="作成者","created_by","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="作成日時","created_at","timestamp","NOT NULL",,"CURRENT_TIMESTAMP","",$FFFFFFFF,""
+Field="更新者","updated_by","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="更新日時","updated_at","timestamp","NOT NULL",,"CURRENT_TIMESTAMP","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20240510215108
+Position="MAIN",850,350
+ZOrder=2
+
+[Entity]
+PName=tbl_publisher
+LName=出版社
+Comment=
+TableInnerOption=
+TableOption=
+Page=MAIN
+Left=400
+Top=900
+Field="出版社ID","publisher_id","bigserial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="出版社名","publisher_name","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="ソート順","sort_order","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="有効開始日","valid_start_date","date","NOT NULL",,"","",$FFFFFFFF,""
+Field="有効終了日","valid_end_date","date","NOT NULL",,"","",$FFFFFFFF,""
+Field="作成者","created_by","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="作成日時","created_at","timestamp","NOT NULL",,"CURRENT_TIMESTAMP","",$FFFFFFFF,""
+Field="更新者","updated_by","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="作成日時","updated_at","timestamp","NOT NULL",,"CURRENT_TIMESTAMP","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20240509000029
+Position="MAIN",400,900
+ZOrder=20
+
+[Relation]
+Entity1=tbl_publisher
+Entity2=tbl_book
+RelationType1=2
+RelationType2=3
+Fields1=publisher_id
+Fields2=publisher_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,1887,8113,2107,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=189
+Bar2=811
+Bar3=211
+TermPos1=R
+TermPos2=R
+ZOrder=23
+
+[Entity]
+PName=tbl_genre
+LName=ジャンル
+Comment=
+TableInnerOption=
+TableOption=
+Page=MAIN
+Left=700
+Top=900
+Field="ジャンルID","genre_id","bigserial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="ジャンル名","genre_name","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="ソート順","sort_order","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="有効開始日","valid_start_date","date","NOT NULL",,"","",$FFFFFFFF,""
+Field="有効終了日","valid_end_date","date","NOT NULL",,"","",$FFFFFFFF,""
+Field="作成者","created_by","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="作成日時","created_at","timestamp","NOT NULL",,"CURRENT_TIMESTAMP","",$FFFFFFFF,""
+Field="更新者","updated_by","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="更新日時","updated_at","timestamp","NOT NULL",,"CURRENT_TIMESTAMP","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20240508215252
+Position="MAIN",700,900
+ZOrder=24
+
+[Relation]
+Entity1=tbl_genre
+Entity2=tbl_book
+RelationType1=2
+RelationType2=3
+Fields1=genre_id
+Fields2=genre_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,2688,7312,4943,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=269
+Bar2=731
+Bar3=494
+TermPos1=R
+TermPos2=R
+ZOrder=25
+
+[Relation]
+Entity1=tbl_author
+Entity2=tbl_book
+RelationType1=2
+RelationType2=3
+Fields1=author_id
+Fields2=author_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,2520,7480,2503,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=252
+Bar2=748
+Bar3=250
+TermPos1=R
+TermPos2=R
+ZOrder=28
